@@ -7,7 +7,7 @@ app = FastAPI()
 
 @app.get("/health")
 def read_root():
-    return {"message": "Hello World"}
+    return {"message": "Hello World 2"}
 
 @app.post("/predict")
 async def predict_banknote(file: Uploadfile = File(...)):
