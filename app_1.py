@@ -1,9 +1,7 @@
 import pandas as pd
-
 from joblib import load
 from fastapi import FastAPI, File, Uploadfile
 from io import StringIO
-
 
 app = FastAPI()
 
