@@ -1,6 +1,6 @@
 import pandas as pd
 from joblib import load
-from fastapi import FastAPI, File, Uploadfile
+from fastapi import FastAPI, File, UploadFile
 from io import StringIO
 
 app = FastAPI()
@@ -10,7 +10,7 @@ def read_root():
     return {"message": "Hello World 2"}
 
 @app.post("/predict")
-async def predict_banknote(file: Uploadfile = File(...)):
+async def predict_banknote(file: UploadFile = File(...)):
     classifier = load("linear_regression.joblib")
 
     features_df = pd.read_csv("selected_features.csv")
