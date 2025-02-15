@@ -136,7 +136,7 @@ def get_items(skip: int = 0, limit: int = 10):
     
 
 @app.post("/predict")
-async def predict_bancknote(file: UploadFile = File(...), db: Session = Depends(get_db)):
+async def predict_banknote(file: UploadFile = File(...), db: Session = Depends(get_db)):
     classifier = load("linear_regression.joblib")
     
     features_df = pd.read_csv('selected_features.csv')
@@ -154,7 +154,7 @@ async def predict_bancknote(file: UploadFile = File(...), db: Session = Depends(
     for i, prediction in enumerate(predictions):
         prediction_entry = Prediction(
             file_name=file.filename,
-            prediction=prediction,
+            predict_values=prediction,
             created_at=now   
         )
         db.add(prediction_entry)
