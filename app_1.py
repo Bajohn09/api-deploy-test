@@ -7,7 +7,10 @@ app = FastAPI()
 
 @app.get("/health")
 def read_root():
-    return {"message": "Hello World 2"}
+    classifier = load("linear_regression.joblib")
+    features_df = pd.read_csv("selected_features.csv")
+    
+    return {"message": "Everything is ok"}
 
 @app.post("/predict")
 async def predict_banknote(file: UploadFile = File(...)):
